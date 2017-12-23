@@ -15,7 +15,7 @@ unsetopt autocd
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-echo "sup dog"
+echo "Buenos dias, buenas tardes"
 
 
 #  ---------------------------------------------------------------------------
@@ -42,7 +42,8 @@ echo "sup dog"
 #   Change Prompt
 #   ------------------------------------------------------------
     # export PS1="ver archivo en github/Stuff"
-    export PS1="%n: %/ $> "
+export PS1="%n: %/ $> "
+
 
 #   Set Paths
 #   ------------------------------------------------------------
@@ -79,7 +80,7 @@ echo "sup dog"
 #   -----------------------------
 # ALIASES
 
-alias editzp='nano .zshrc'                  # Edit .zshrc file
+alias editzp='nano ~/.zshrc'                  # Edit .zshrc file
 alias docs='cd ~/Documents'                 # Go to documents
 alias jn='jupyter notebook'                 # Jupyter notebook
 
@@ -335,3 +336,7 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #   e.g.: hdiutil create -size 10m 10MB.dmg
 #   the above create files that are almost all zeros - if random bytes are desired
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
+
+# OTHERS
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
