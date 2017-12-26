@@ -84,13 +84,37 @@ alias editzp='nano ~/.zshrc'                  # Edit .zshrc file
 alias docs='cd ~/Documents'                 # Go to documents
 alias jn='jupyter notebook'                 # Jupyter notebook
 
+#-------------------- git add, commit and push ------------------
+
+alias gpush='echo "enter commit message : " && read MSG && git add . && git commit -m "$MSG" && git push'
+
+# -------------------- open an array of apps ---------------------
+app() { for elem in $@
+do
+	open -a $(tr '[:lower:]' '[:upper:]' <<< ${elem:0:1})${elem:1}
+done }
+# -------------------------------------------------------------
+
+go() { if [[ $1 = 'd' ]]; then
+	cd ~/Desktop
+elif [[ $1 = 'p' ]]; then
+cd ~/Proyects
+elif [[ $1 = 's' ]]; then
+cd ~/Google\ Drive/Universidad/UC/Semestre\ 9
+elif [[ $1 = 'c' ]]; then
+cd ~/Google\ Drive/Universidad/Cursos
+else; echo '	Commnando no encontrado'
+fi
+}
+
+
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
 alias less='less -FSRXc'                    # Preferred 'less' implementation
-# cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
-# # alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
+# cd() { builtin cd "$@"; ll; }             # Always list directory contents upon 'cd'
+# # alias cd..='cd ../'                     # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
 alias .3='cd ../../../'                     # Go back 3 directory levels
