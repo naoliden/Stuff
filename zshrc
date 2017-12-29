@@ -80,30 +80,50 @@ export PS1="%n: %/ $> "
 #   -----------------------------
 # ALIASES
 
-alias editzp='nano ~/.zshrc'                  # Edit .zshrc file
+alias editzp='vim ~/.zshrc'                 # Edit .zshrc file
+alias editvim='vim ~/.vimrc'                # Edit .vimrc file
 alias docs='cd ~/Documents'                 # Go to documents
 alias jn='jupyter notebook'                 # Jupyter notebook
+alias pri='printf'                          # shortcut to printf function
+
+#------- Compile C++ as shown in Algorith toolbox, Coursera -----------
+
+compc() { g++ -pipe -O2 -std=c++14 $1 -lm }
+
+#--------------- Open website w/default browser ------------------
+
+web() { open https://$1 }
 
 #-------------------- git add, commit and push ------------------
 
-alias gpush='echo "enter commit message : " && read MSG && git add . && git commit -m "$MSG" && git push'
+alias qpush='echo "enter commit message : " && read MSG && git add . && git commit -m "$MSG" && git push'
+
+gpush() { if [[ $1 = "." ]]; then
+	git add .
+fi
+echo "Enter commit message : " && read MSG && git commit -m "$MSG" && git push
+}
 
 # -------------------- open an array of apps ---------------------
 app() { for elem in $@
 do
 	open -a $(tr '[:lower:]' '[:upper:]' <<< ${elem:0:1})${elem:1}
 done }
-# -------------------------------------------------------------
+#----------------------- go to directory ----------------------------
 
 go() { if [[ $1 = 'd' ]]; then
-	cd ~/Desktop
+	cd ~/Desktop/$2
 elif [[ $1 = 'p' ]]; then
-cd ~/Proyects
+cd ~/Proyects/$2
+elif [[ $1 = 'progra' ]]; then
+cd ~/progra/$2
 elif [[ $1 = 's' ]]; then
-cd ~/Google\ Drive/Universidad/UC/Semestre\ 9
+cd ~/Google\ Drive/Universidad/UC/Semestre\ 9/$2
 elif [[ $1 = 'c' ]]; then
-cd ~/Google\ Drive/Universidad/Cursos
-else; echo '	Commnando no encontrado'
+cd ~/Google\ Drive/Universidad/Cursos/$2
+elif [[ $1 = 'down' ]]; then
+cd ~/Downloads/$2
+else; echo 'Directory not linked with go'
 fi
 }
 
