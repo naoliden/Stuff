@@ -165,16 +165,15 @@ git push
 
 #----------- Push changes to vimrc and zshrc  -------------
 saverc() {
-  curret_dir = $PWD
+  local current_dir=$PWD
   cp ~/.vimrc ~/.zshrc /Users/normanoliden/Proyects/Stuff
   cat /Users/normanoliden/Proyects/Stuff/.vimrc > vimrc
   cat /Users/normanoliden/Proyects/Stuff/.zshrc > zshrc
   cd /Users/normanoliden/Proyects/Stuff
   git add .vimrc .zshrc vimrc zshrc
   git commit -m"New update to rcs"
-  git push /Users/normanoliden/Proyects/Stuff master
-  cd current_dir
-  echo "RC files saved.\n"
+  git push origin master
+  cd "$current_dir"
 }
 
 # -------------------- open an array of apps ---------------------

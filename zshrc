@@ -18,9 +18,6 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 
-#echo "Buenos dias, buenas tardes, dog"
-
-
 #  ---------------------------------------------------------------------------
 #
 #  Description:  This file holds all my BASH configurations and aliases
@@ -166,13 +163,17 @@ echo "Enter commit message : " && read MSG && git commit -m "$MSG"
 git push
 }
 
+#----------- Push changes to vimrc and zshrc  -------------
 saverc() {
+  local current_dir=$PWD
   cp ~/.vimrc ~/.zshrc /Users/normanoliden/Proyects/Stuff
   cat /Users/normanoliden/Proyects/Stuff/.vimrc > vimrc
   cat /Users/normanoliden/Proyects/Stuff/.zshrc > zshrc
-  git add /Users/normanoliden/Proyects/Stuff .vimrc .zshrc vimrc zshrc
+  cd /Users/normanoliden/Proyects/Stuff
+  git add .vimrc .zshrc vimrc zshrc
   git commit -m"New update to rcs"
-  git push
+  git push origin master
+  cd "$current_dir"
 }
 
 # -------------------- open an array of apps ---------------------
